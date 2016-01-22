@@ -1,0 +1,3 @@
+class OfferedFavor < Favor
+
+end

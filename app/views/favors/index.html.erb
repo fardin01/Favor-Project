@@ -1,0 +1,16 @@
+<h3><%= link_to "Request a favor", new_requested_favor_path %></h3>
+
+<h1>Requested Favors</h1>
+<% @favors.requested.each do |requested_favor| %>
+  <%= link_to requested_favor.title, requested_favor_path(requested_favor) %><br />
+<% end %>
+
+
+<h3><%= link_to "Offer a favor", new_offered_favor_path %></h3>
+
+<h1>Offered Favors</h1>
+<% @favors.offered.each do |offered_favor| %>
+  <%= link_to offered_favor.title, offered_favor_path(offered_favor) %><br />
+<% end %>
+
+  

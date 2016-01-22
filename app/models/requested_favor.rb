@@ -1,0 +1,4 @@
+class RequestedFavor < Favor 
+
+
+end
