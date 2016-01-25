@@ -1,0 +1,20 @@
+<%= set_show_page_header(type) %>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><%= favor.title %></td>
+    <td><%= favor.description %></td>
+  </tr>
+</table>
+
+The following people have sent a request
+
+<% favor.acceptances.each do |ac| %>
+  <%= ac.user.firstname %>
+<% end %>
+
+CREATOR PAGE

@@ -1,11 +1,21 @@
-<nav>
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to "Sign out", logout_path %></li>
-      <li><%= link_to current_user.firstname, user_path(current_user) %></li>
-    <% else %>
-      <li><%= link_to "Sign up", new_user_path %></li>
-      <li><%= link_to "Sign in", new_session_path %></li>
-    <% end %>
-  </ul>
+<nav class="navbar navbar-default">
+   <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Favor", root_path%></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Request a favor", request_a_favor_path %></li>
+          <li><%= link_to "Offer a favor", offer_a_favor_path %></li>
+          <li><%= link_to "Browse Favors", favors_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to current_user.firstname, user_path(current_user) %></li>
+          <li><%= link_to "Sign out", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Sign up", signup_path %></li>
+          <li><%= link_to "Sign in", login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </nav>

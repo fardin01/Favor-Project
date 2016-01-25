@@ -1,9 +1,9 @@
 class FavorsController < ApplicationController
-  before_action :set_favor_type
   before_action :set_favor, except: [:index, :new, :create]
-
+  before_action :set_favor_type
 
   def index
+    @near_users = current_user.nearbys(30)
     @favors = type_class.all
   end
 
@@ -12,7 +12,8 @@ class FavorsController < ApplicationController
   end
 
   def create
-    @favor = current_user.favors.new(favor_params)
+    @favor = type_class.new(favor_params)
+    @favor.user_id = current_user.id
 
     if @favor.save
       redirect_to @favor, notice: "Favor created successfully!"

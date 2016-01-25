@@ -1,16 +1,31 @@
-<h3><%= link_to "Request a favor", new_requested_favor_path %></h3>
+<div class="col-md-6">
+  <h1>Requested Favors</h1>
+  <% @near_users.each do |user| %>
+    <% user.favors.requested.each do |requested_favor| %>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          Favor requested by <%= link_to requested_favor.user.firstname, user_path(requested_favor.user) %><br />
+        </div><!-- panel-heading -->
+        <div class="panel-body">
+          <%= link_to requested_favor.title, requested_favor_path(requested_favor) %><br />
+        </div><!-- panel-body -->
+      </div><!-- panel panel-success -->
+    <% end %>
+  <% end %>
+</div><!-- col-md-6 -->
 
-<h1>Requested Favors</h1>
-<% @favors.requested.each do |requested_favor| %>
-  <%= link_to requested_favor.title, requested_favor_path(requested_favor) %><br />
-<% end %>
-
-
-<h3><%= link_to "Offer a favor", new_offered_favor_path %></h3>
-
-<h1>Offered Favors</h1>
-<% @favors.offered.each do |offered_favor| %>
-  <%= link_to offered_favor.title, offered_favor_path(offered_favor) %><br />
-<% end %>
-
-  
+<div class="col-md-6">
+  <h1>Offered Favors</h1>
+  <% @near_users.each do |user| %>
+    <% user.favors.offered.each do |offered_favor| %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Favor offered by <%= link_to offered_favor.user.firstname, user_path(offered_favor.user) %>
+        </div><!-- panel-heading -->
+        <div class="panel-body">
+          <%= link_to offered_favor.title, offered_favor_path(offered_favor) %><br />
+        </div><!-- panel-body -->
+      </div><!-- panel-info -->
+    <% end %>
+  <% end %>
+</div><!-- col-md-6 -->

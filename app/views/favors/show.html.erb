@@ -1,1 +1,8 @@
-<%= @favor.title %>
+
+<% if @favor.user_id == current_user.id %>
+  <%= render partial: 'favor_creator', locals: {favor: @favor, type: @type} %>
+<% elsif unassigned(@favor) %>
+  <%= render partial: 'favor_visitor', locals: {favor: @favor} %>
+<% elsif assigned(@favor) %>
+  <%= render partial: 'favor_acceptor', locals: {favor: @favor} %>
+<% end %>

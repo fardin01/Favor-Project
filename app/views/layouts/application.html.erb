@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if notice || alert %> <!-- because they add margin to the 
+  top of the page -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+
   <%= render 'shared/navbar' %>
   <%= yield %>
 
