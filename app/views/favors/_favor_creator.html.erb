@@ -1,4 +1,5 @@
-<%= set_show_page_header(type) %>
+(CREATOR PAGE)
+<h1><%= set_show_page_header(type) %></h1>
 
 <table class="table">
   <tr>
@@ -11,10 +12,12 @@
   </tr>
 </table>
 
-The following people have sent a request
+<p><%= set_acceptances_message(type, favor) %></p>
 
-<% favor.acceptances.each do |ac| %>
-  <%= ac.user.firstname %>
+<% if favor.has_accepted_acceptance? %>
+  <%= accepted_acceptance_user_link(favor)%>
+<% else %>
+  <% favor.acceptances.each do |acceptance| %>
+    <%= link_to acceptance.user.firstname, user_path(acceptance.user) %> <%= link_to "Accept", acceptance_path(acceptance),method: :put %><br />
+  <% end %>
 <% end %>
-
-CREATOR PAGE

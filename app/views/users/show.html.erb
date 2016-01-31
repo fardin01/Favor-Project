@@ -1,0 +1,63 @@
+<h1><%= @user.firstname %>'s Profile</h1>
+
+
+  <table class="table">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>City</th>
+      <th>Email</th>
+    </tr>
+    <tr>
+      <td><%= @user.firstname %></td> 
+      <td><%= @user.lastname %></td>
+      <td><%= @user.city %></td>
+      <td><%= @user.email %></td>
+    </tr>
+  </table>
+
+<div class="col-md-3">
+  <h2>Requested Favors</h2>
+  <ul class="list-group">
+    <% @user.favors.requested.each do |requested_favor| %>
+      <li class="list-group-item list-group-item-success">
+        <%= link_to requested_favor.title, requested_favor_path(requested_favor) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-md-3">  
+  <h2>Offered Favors</h2>
+  <ul class="list-group">
+    <% @user.favors.offered.each do |offered_favor| %>
+      <li class="list-group-item list-group-item-success">
+        <%= link_to offered_favor.title, offered_favor_path(offered_favor) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-md-3">
+<h2>To be done Favors</h2>
+<ul class="list-group">
+  <% @user.to_be_done_favors.each do |favor|%>
+    <li class="list-group-item list-group-item-success">
+      <%= link_to favor.title, favor_path(favor) %><br />
+    </li>
+  <% end %>
+</div>
+
+<div class="col-md-3">
+<h2>Done Favors</h2>
+  <ul class="list-group">
+  <% @user.done_favors.each do |favor|%>
+    <li class="list-group-item list-group-item-success">
+      <%= link_to favor.title, favor_path(favor) %><br />
+    </li>
+  <% end %>
+</div>
+
+<h2>Favors you sent acceptance requests to</h2>
+<h2>To be recieved favors</h2>
+<h2>Recieved favors</h2>

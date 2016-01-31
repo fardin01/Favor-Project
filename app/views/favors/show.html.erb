@@ -1,8 +1,9 @@
-
 <% if @favor.user_id == current_user.id %>
   <%= render partial: 'favor_creator', locals: {favor: @favor, type: @type} %>
-<% elsif unassigned(@favor) %>
+<% elsif !@favor.has_accepted_acceptance? %>
   <%= render partial: 'favor_visitor', locals: {favor: @favor} %>
-<% elsif assigned(@favor) %>
+<% elsif @favor.has_accepted_acceptance? && @favor.acceptor_user == current_user %>
   <%= render partial: 'favor_acceptor', locals: {favor: @favor} %>
+<% else %>
+  Plain show page
 <% end %>

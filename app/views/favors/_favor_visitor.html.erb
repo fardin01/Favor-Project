@@ -1,3 +1,5 @@
+(VISITOR PAGE)
+<h3>Favor by <%=  link_to favor.user.firstname, user_path(favor.user) %></h3>
 <table class="table">
   <tr>
     <th>Title</th>
@@ -9,4 +11,4 @@
   </tr>
 </table>
 
-VISITOR PAGE
+<%= link_to "Send a request for this favor", acceptances_path(acceptance: {favor_id: favor.id}), method: :post %>

@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   skip_before_filter :authenticate_user
   before_filter :find_favor, only: :update
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end

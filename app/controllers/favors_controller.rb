@@ -22,10 +22,19 @@ class FavorsController < ApplicationController
     end
   end
 
+  def update
+    @favor.update_attributes(favor_params)
+    if @favor.save
+      redirect_to @favor, notice: "Updated"
+    else
+      render "update"
+    end
+  end
+
   private
 
   def favor_params
-    params.require(type.underscore.to_sym).permit(:title, :description, :type)
+    params.require(type.underscore.to_sym).permit(:title, :description, :type, :completed)
   end
 
   def set_favor_type
@@ -44,7 +53,3 @@ class FavorsController < ApplicationController
     @favor = type_class.find(params[:id])
   end
 end
-
-
-
-

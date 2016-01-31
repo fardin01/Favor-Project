@@ -11,23 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125205919) do
+ActiveRecord::Schema.define(version: 20160126204139) do
 
   create_table "acceptances", force: :cascade do |t|
     t.integer  "favor_id"
     t.integer  "user_id"
-    t.boolean  "accepted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
+
+  add_index "acceptances", ["user_id", "favor_id"], name: "index_acceptances_on_user_id_and_favor_id", unique: true
 
   create_table "favors", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
-    t.boolean  "completed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "completed",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "type"
   end
 
