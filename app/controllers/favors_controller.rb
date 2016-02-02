@@ -22,6 +22,9 @@ class FavorsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     @favor.update_attributes(favor_params)
     if @favor.save
@@ -51,5 +54,9 @@ class FavorsController < ApplicationController
 
   def set_favor
     @favor = type_class.find(params[:id])
+  end
+
+  def current_resource
+    @favor ||= Favor.find(params[:id]) if params[:id]
   end
 end

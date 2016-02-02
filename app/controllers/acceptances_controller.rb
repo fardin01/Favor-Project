@@ -1,6 +1,6 @@
 class AcceptancesController < ApplicationController
   before_action :find_acceptance, only: :update
-  before_action :find_favor_for_create, only: :create
+  before_action :current_resource, only: :create
 
   def create
     @acceptance = current_user.acceptances.build(acceptance_params)
@@ -32,7 +32,11 @@ class AcceptancesController < ApplicationController
     @acceptance = Acceptance.find(params[:id])
   end
 
-  def find_favor_for_create
-    @favor ||= Favor.find(params[:acceptance][:favor_id])
+  def current_resource
+    if params[:action] == 'create'
+      @favor ||= Favor.find(params[:acceptance][:favor_id]) 
+    elsif params[:action] == 'update'
+      @favor ||= find_acceptance.favor
+    end
   end
 end

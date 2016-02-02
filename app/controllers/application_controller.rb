@@ -24,19 +24,13 @@ class ApplicationController < ActionController::Base
     @current_permission ||= Permission.new(current_user)
   end
 
-  def authorize
-    if !current_permission.allow?(params[:controller], params[:action], favor_object)
-      redirect_to root_url, alert: "No no no. You can't do that!"
-    end
+  def current_resource
+    nil
   end
 
-  # favor object has to be found because we are calling an instance method
-  # has_accepted_acceptance? on it in `Permission` class `allow?` method
-  def favor_object
-    if params[:controller] == 'acceptances' && params[:action] == 'create'
-      @favor ||= Favor.find(params[:acceptance][:favor_id]) 
-    elsif params[:controller] == 'acceptances' && params[:action] == 'update'
-      @favor ||= Acceptance.find(params[:id]).favor if params[:controller] == 'acceptances' && params[:action] == 'update'
+  def authorize
+    if !current_permission.allow?(params[:controller], params[:action], current_resource)
+      redirect_to root_url, alert: "No no no. You can't do that!"
     end
   end
 end

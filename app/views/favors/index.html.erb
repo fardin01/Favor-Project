@@ -2,6 +2,7 @@
   <h1>Requested Favors</h1>
   <% @near_users.each do |user| %>
     <% user.favors.requested.each do |requested_favor| %>
+      <% next if requested_favor.has_accepted_acceptance? %>
       <div class="panel panel-success">
         <div class="panel-heading">
           Favor requested by <%= link_to requested_favor.user.firstname, user_path(requested_favor.user) %><br />
@@ -18,6 +19,7 @@
   <h1>Offered Favors</h1>
   <% @near_users.each do |user| %>
     <% user.favors.offered.each do |offered_favor| %>
+      <% next if offered_favor.has_accepted_acceptance? %>
       <div class="panel panel-info">
         <div class="panel-heading">
           Favor offered by <%= link_to offered_favor.user.firstname, user_path(offered_favor.user) %>

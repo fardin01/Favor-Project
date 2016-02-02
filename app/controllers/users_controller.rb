@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user
-  before_filter :find_favor, only: :update
 
   def show
     @user = User.find(params[:id])
@@ -18,11 +17,13 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-  end
 
-  def update
-    @favor.update_attribute(:accepted, true)   
-  end 
+    def edit
+    end
+
+    def update
+    end
+  end
 
   private
 
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:firstname, :lastname, :email, :city, :password, :password_confirmation)
   end
 
-  def find_favor
-    @favor = Favor.find(params[:id])
+  def current_resource
+    @user ||= current_user
   end
 end
