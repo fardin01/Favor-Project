@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
-  #root to: 'favors#index'
-  root to: 'site#index'
+  root to: 'favors#index'
   resources :favors, except: [:new]
   resources :requested_favors, controller: 'favors', type: 'RequestedFavor', except: :new
   get 'request-a-favor', to: 'favors#new', type: 'RequestedFavor'

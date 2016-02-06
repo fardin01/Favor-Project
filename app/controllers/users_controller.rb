@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user
+  before_action :current_resource, only: :show
 
-  def show
-    @user = User.find(params[:id])
+  def show 
   end
 
   def new
@@ -17,12 +17,12 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
 
-    def edit
-    end
+  def edit
+  end
 
-    def update
-    end
+  def update
   end
 
   private
@@ -32,6 +32,6 @@ class UsersController < ApplicationController
   end
 
   def current_resource
-    @user ||= current_user
+    @user = User.find(params[:id])
   end
 end
