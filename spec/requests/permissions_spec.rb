@@ -1,11 +1,5 @@
 require "rails_helper"
 
-RSpec::Matchers.define :allow do |*args|
-  match do |permission|
-    expect(permission.allow?(*args)).to be true
-  end
-end
-
 describe "Permissions" do
   subject(:permission) { Permission.new(user)}
   let (:user) { create(:user) }
@@ -16,15 +10,15 @@ describe "Permissions" do
 
     context "when has accepted acceptance" do
       it "shold not allow sending more acceptances" do
-        acceptance.accepted = true
-        expect(!permission.allow?(:acceptances, :create, favor)).to be false
+        acceptance.update_attribute(:accepted, true)
+        expect(permission.allow?(:acceptances, :create, favor)).to be false
       end
 
       it "should not allow already-sent acceptances to be true" do
         user_two = create :user
         acceptance_two = create(:acceptance, user: user_two, favor: favor)
-        acceptance.accepted = true
-        expect(!permission.allow?(:acceptances, :update, favor)).to be false
+        acceptance.update_attribute(:accepted, true)
+        expect(permission.allow?(:acceptances, :update, favor)).to be false
       end
     end
   end
