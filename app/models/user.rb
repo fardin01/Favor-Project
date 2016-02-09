@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :favors
   has_many :acceptances
+  has_many :activities
 
   has_secure_password
 

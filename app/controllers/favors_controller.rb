@@ -34,6 +34,12 @@ class FavorsController < ApplicationController
     end
   end
 
+  def destroy
+    @favor.destroy
+    flash[:success] = "Favor deleted"
+    redirect_to favors_path
+  end
+
   private
 
   def favor_params

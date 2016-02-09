@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path if session[:user_id] == nil
   end
 
+  def track_activity(trackable, action = params[:action])
+    current_user.activities.create! action: action, trackable: trackable
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

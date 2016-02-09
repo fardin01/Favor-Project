@@ -16,12 +16,13 @@ class Permission
         usr.id == user.id
       end
       allow :favors, [:new, :create]
-      allow :favors, [:edit, :update] do |favor|
+      allow :favors, [:edit, :update, :destroy] do |favor|
         favor.user_id == user.id
       end
       allow :acceptances, [:create, :update] do |favor|
         !favor.has_accepted_acceptance?
       end
+      allow :activities, [:index]
     end
   end
 

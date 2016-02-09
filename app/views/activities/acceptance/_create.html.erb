@@ -1,0 +1,5 @@
+<% if activity.trackable.favor.type == "RequestedFavor" %>
+  can give you a favor with <%= link_to activity.trackable.favor.title, activity.trackable.favor %>
+<% else %>
+  needs <%= link_to activity.trackable.favor.title, activity.trackable.favor %> favor from you
+<% end %>

@@ -6,6 +6,7 @@ class AcceptancesController < ApplicationController
     @acceptance = current_user.acceptances.build(acceptance_params)
 
     if @acceptance.save
+      track_activity(@acceptance)
       redirect_to favor_path(@acceptance.favor), notice: "Reuqest sent"
     else
       render :template => 'favors/index', notice: "Something went wrong"
@@ -14,6 +15,11 @@ class AcceptancesController < ApplicationController
 
   def update
     @acceptance.update_attribute(:accepted, true)
+
+    @acceptance.favor.acceptances.each do |rejected_ac|
+      rejected_ac.accepted = false unless rejected_ac == @acceptance
+      track_activity(rejected_ac)
+    end
 
     if @acceptance.save
       redirect_to favor_path(@acceptance.favor), notice: "Accepted"

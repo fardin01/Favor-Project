@@ -1,6 +1,16 @@
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryGirl.define do  factory :reward do
+    title "MyString"
+description "MyText"
+  end
+  factory :activity do
+    user nil
+action "MyString"
+trackable nil
+trackable_type "MyString"
+  end
+
   factory :favor do
     sequence(:title) {|n| "Title no #{n}"}
     sequence(:description) {|n| "description no #{n}"}

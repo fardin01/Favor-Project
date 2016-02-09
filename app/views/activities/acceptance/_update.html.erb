@@ -1,0 +1,11 @@
+<% if activity.trackable.favor.type == "RequestedFavor" && activity.trackable.accepted == true %>
+  chose you to do him/her favor with <%= link_to activity.trackable.favor.title, activity.trackable.favor %>
+<% elsif activity.trackable.accepted == false %>
+  <% if activity.trackable.favor.type == "RequestedFavor" %>
+    No longer needs your help with <%= activity.trackable.favor.title %>
+  <% else %>
+    decided to go with someone else for his offered favor.
+  <% end %>
+<% else %>
+  is going to give YOU <%= link_to activity.trackable.favor.title, activity.trackable.favor %> 
+<% end %>
