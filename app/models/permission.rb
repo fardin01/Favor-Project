@@ -4,6 +4,7 @@ class Permission
     allow :users, [:new, :create, :show]
     allow :sessions, [:new, :create, :destroy]
     allow :favors, [:index]
+    allow :rewards, [:show]
     if user
       allow :favors, [:show] do |favor|
         if favor.has_accepted_acceptance?

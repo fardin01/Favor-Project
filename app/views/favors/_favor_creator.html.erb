@@ -7,10 +7,12 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th>Rewards</th>
   </tr>
   <tr>
     <td><%= favor.title %></td>
     <td><%= favor.description %></td>
+    <td><%= raw(favor.rewards.map{ |reward| raw(link_to(reward.title, reward_path(reward))) }.join(", ")) %></td>
   </tr>
 </table>
 

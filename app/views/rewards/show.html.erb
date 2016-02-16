@@ -1,0 +1,7 @@
+<%= @reward.title %><br />
+<%= @reward.description %><br />
+
+<% @reward.favors.each do |favor| %>
+  Some Favors that have this reward in their reward list:
+  <%= link_to favor.title, favor_path(favor)%>
+<% end %>

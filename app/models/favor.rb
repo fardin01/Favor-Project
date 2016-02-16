@@ -3,6 +3,9 @@ class Favor < ActiveRecord::Base
   belongs_to :user
   has_many :acceptances
 
+  has_many :compensations
+  has_many :rewards, through: :compensations
+
   scope :requested, -> {where(type: 'RequestedFavor')}
   scope :offered, -> {where(type: 'OfferedFavor')}
 

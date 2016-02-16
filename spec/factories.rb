@@ -1,6 +1,10 @@
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do  factory :reward do
+FactoryGirl.define do  factory :compensation do
+    favor_id 1
+reward_id 1
+  end
+  factory :reward do
     title "MyString"
 description "MyText"
   end

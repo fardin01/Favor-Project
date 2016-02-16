@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209211954) do
+ActiveRecord::Schema.define(version: 20160216201413) do
 
   create_table "acceptances", force: :cascade do |t|
     t.integer  "favor_id"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20160209211954) do
 
   add_index "activities", ["trackable_id"], name: "index_activities_on_trackable_id"
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+
+  create_table "compensations", force: :cascade do |t|
+    t.integer  "favor_id"
+    t.integer  "reward_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favors", force: :cascade do |t|
     t.string   "title"

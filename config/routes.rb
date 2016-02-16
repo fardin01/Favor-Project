@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :acceptances, only: [:create, :update]
   resources :activities, only: :index
+  resources :rewards, only: :show
 end

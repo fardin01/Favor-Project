@@ -43,7 +43,7 @@ class FavorsController < ApplicationController
   private
 
   def favor_params
-    params.require(type.underscore.to_sym).permit(:title, :description, :type, :completed)
+    params.require(type.underscore.to_sym).permit(:title, :description, :type, :completed, reward_ids: [])
   end
 
   def set_favor_type
