@@ -24,6 +24,7 @@ class Permission
         !favor.has_accepted_acceptance?
       end
       allow :activities, [:index]
+      allow :searches, [:new, :create, :show]
     end
   end
 

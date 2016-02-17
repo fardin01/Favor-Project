@@ -1,0 +1,22 @@
+<h1>Search Favors</h1>
+
+<%= form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="field">
+    <%= f.label :reward_ids, "Rewards" %><br />
+    <%= f.collection_check_boxes(:reward_ids, Reward.all, :id, :title) %>
+  </div>
+  <div class="field">
+    <%= f.label "Requested" %>
+    <%= f.check_box :requested  %>
+  </div>
+
+  <div class="field">
+    <%= f.label "offered" %>
+    <%= f.check_box :offered  %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>

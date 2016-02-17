@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :acceptances, only: [:create, :update]
   resources :activities, only: :index
   resources :rewards, only: :show
+  resources :searches
 end

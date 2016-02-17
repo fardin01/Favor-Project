@@ -1,0 +1,5 @@
+<h1>Found Favors</h1>
+
+<% @search.favors.each do |favor| %>
+  <%= link_to favor.title, favor_path(favor) %>
+<% end %>

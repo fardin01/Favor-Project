@@ -1,6 +1,11 @@
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do  factory :compensation do
+FactoryGirl.define do  factory :search do
+    keywords "MyString"
+type ""
+reward_ids 1
+  end
+  factory :compensation do
     favor_id 1
 reward_id 1
   end
