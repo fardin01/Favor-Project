@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit!
+    params.require(:search).permit(:keywords, :requested, :offered, reward_ids: [])
   end
 
 end

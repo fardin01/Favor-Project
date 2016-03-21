@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216220030) do
+ActiveRecord::Schema.define(version: 20160217201008) do
 
   create_table "acceptances", force: :cascade do |t|
     t.integer  "favor_id"
@@ -59,9 +59,15 @@ ActiveRecord::Schema.define(version: 20160216220030) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "rewards_searches", force: :cascade do |t|
+    t.integer  "reward_id"
+    t.integer  "search_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "searches", force: :cascade do |t|
     t.string   "keywords"
-    t.integer  "reward_ids"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "requested",  default: false
